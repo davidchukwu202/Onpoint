@@ -1,13 +1,33 @@
 
 import userService from "../services/userService.js";
-const {createUser,getAllUsers,getUser,deleteUser,updateUser}= new userService
+const {createUser,getAllUsers,getUser,deleteUser,updateUser,findByEmail}= new userService();
+import { authenticate,createToken } from "../middlewares/authMiddleware.js";
+import bcrypt from "bcryptjs"
 
 
 export default class userController{
     async createUser(req,res,next){
         try {
-            const user= await createUser(req.body)
-            res.status(201).json(user);
+            const{email,name,password}=req.body;
+            if(await findByEmail(email)){
+                return res.status(409).json({message:"email already exists"})}
+            const hasedPassword= await bcrypt.hash(password,10);
+
+
+            const user= await createUser({
+                name,email,password: hasedPassword
+            });
+            const token= createToken(user);
+            res.cookie("token",token,{
+                httpOnly:true,
+                maxAge: 2*24*60*60*1000
+            })
+
+            res.status(201).send({
+                message: "user created",
+                user
+
+            });
         } catch (error) {
             next(error);
             
@@ -40,9 +60,9 @@ export default class userController{
             if(!update){
                 return res.status(404).json({error:"user not found"})     
             }
-            res.status(200).json(updateUser);
+            res.status(200).json(update);
         } catch (error) {
-            next()
+            next(error)
             
         }
     } 
@@ -56,4 +76,45 @@ export default class userController{
             
         }
     }
-};
+
+    async login(req,res){
+            const {email,password}= req.body
+            const user=await findByEmail(email);
+            if (!user){
+                return res.status(400).send({
+                    success:false,
+                    message: "invaild credentials"
+                });
+
+            }
+            const hasedPassword= await bcrypt.compare(password,user.password)
+            if (!hasedPassword){
+                return res.status(400).send({
+                    success :false,
+                    message:"invalid Credentials"
+                    
+                });
+
+            }
+
+            const token = createToken(user);
+            res.cookie("token", token, {
+                httpOnly: true,
+                maxAge: 2 * 24 * 60 * 60 * 1000
+            });
+
+            return res.status(200).send({
+                success: true,
+                message: "User logged in successfully",
+                user,
+                token
+            });
+        } catch (error) {
+            next(error);
+        }
+    }
+           
+    
+            
+        
+    

@@ -1,10 +1,13 @@
 import User from "../models/user.js";
-
 export default class userService{
      async createUser(user){
         const userId= await User.create(user);
-        return User.findOne({_id: user._id},"-__v-password");
+        return User.findOne({_id: userId.id},"-__v-password");
 
+     }
+
+     async findByEmail(email){
+      return await User.findOne({email:email})
      }
      async getAllUsers(){
         return await User.findOne()

@@ -3,6 +3,9 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import ConnectDb from "./configs/db.js";
 import { route } from "./routes/userRoute.js";
+import "express-async-errors"
+import { errorHandler } from "./middlewares/errorHandler.js";
+import cookieParser from "cookie-parser";
 dotenv.config();
 
 
@@ -20,7 +23,8 @@ app.get('/',(req, res) =>{
 });
 
 app.use('/api/v1',route);
-
+app.use(errorHandler);
+app.use(cookieParser);
 app.listen(port,()=>{
     console.log(`Server is live on port ${port}`)
 });
