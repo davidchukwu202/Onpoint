@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Dark Theme</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+  <!-- Header -->
+  <div class="bg-gray-800 text-gray-200 p-4 md:rounded-b-3xl">
+    <div class="flex justify-between items-center">
+      <button class="text-xl">&#9776;</button>
+      <p class="text-sm md:text-base">Welcome back, <span class="font-semibold">Chukwuebuka Chukwu ...</span></p>
+      <button class="text-xl">&#128276;</button>
+    </div>
+    <div class="text-center mt-4">
+      <p class="text-xs md:text-sm">Your Balance</p>
+      <div class="flex justify-center items-center">
+        <span class="font-semibold text-sm md:text-lg">Beverage</span>
+        <span class="mx-2 md:mx-4 border-l border-gray-200 h-4"></span>
+        <span class="font-semibold text-sm md:text-lg">Care</span>
+      </div>
+      <div class="flex justify-center items-center mt-1">
+        <p class="text-xs md:text-base">₦ 70,000,000</p>
+        <span class="mx-2 md:mx-4"></span>
+        <p class="text-xs md:text-base">₦ 0</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6 px-6">
+      <a href="topup.html" class="flex flex-col items-center">
+        <div class="bg-gray-700 rounded-full p-3 mb-2">
+          <img src="https://img.icons8.com/ios-filled/50/ffffff/wallet--v1.png" class="h-5 w-5" alt="Top Up Icon"/>
+        </div>
+        <p class="text-xs md:text-sm">Top Up</p>
+      </a>
+      <a href="orders.html" class="flex flex-col items-center">
+        <div class="bg-gray-700 rounded-full p-3 mb-2">
+          <img src="https://img.icons8.com/ios-filled/50/ffffff/truck.png" class="h-5 w-5" alt="Orders Icon"/>
+        </div>
+        <p class="text-xs md:text-sm">Orders</p>
+      </a>
+      <a href="received.html" class="flex flex-col items-center">
+        <div class="bg-gray-700 rounded-full p-3 mb-2">
+          <img src="https://img.icons8.com/ios-filled/50/ffffff/open-box.png" class="h-5 w-5" alt="Received Order Icon"/>
+        </div>
+        <p class="text-xs md:text-sm">Received Order</p>
+      </a>
+      <a href="statement.html" class="flex flex-col items-center">
+        <div class="bg-gray-700 rounded-full p-3 mb-2">
+          <img src="https://img.icons8.com/ios-filled/50/ffffff/receipt.png" class="h-5 w-5" alt="Account Statement Icon"/>
+        </div>
+        <p class="text-xs md:text-sm">Account Statement</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="flex flex-col items-center justify-center text-center p-8">
+    <img src="https://img.icons8.com/ios/50/ffffff/cancel-2.png" alt="No orders icon" class="w-16 h-16 opacity-50 mb-4">
+    <p class="text-gray-400 text-sm">No suggested order yet</p>
+  </div>
+
+  <!-- Floating Action Button -->
+  <a href="#" class="fixed bottom-20 right-4 bg-green-600 rounded-full p-4 shadow-lg text-white text-2xl">+</a>
+
+  <!-- Footer (Bottom Navigation) -->
+  <div class="fixed bottom-0 left-0 w-full bg-gray-800 border-t border-gray-700">
+    <div class="flex justify-around py-3">
+      <a href="index.html" class="flex flex-col items-center text-green-500">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3l1.42 1.42L19 10h-5v7h-4v-7H5l5.58-5.58L12 3zm0-1.71L5.71 7.29C5.09 7.91 5 8.78 5 9v10a2 2 0 002 2h10a2 2 0 002-2V9c0-.22-.09-1.09-.71-1.71L12 1.29zM17 18H7V9.83l5-5 5 5V18z"/></svg>
+        <span class="text-xs">Home</span>
+      </a>
+      <a href="payment.html" class="flex flex-col items-center text-gray-400">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9h18V7H3v2zm0 10h18v-8H3v8zm2-6h4v4H5v-4zm6 0h8v4h-8v-4z"/></svg>
+        <span class="text-xs">Payment</span>
+      </a>
+      <a href="cart.html" class="flex flex-col items-center text-gray-400">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M7 4h14l-1.38 6.62A2.5 2.5 0 0117.15 13H8.1l-1.02 4.58A2.5 2.5 0 014.7 20H2v-2h2.7c.6 0 1.13-.38 1.28-.93L7.54 7.4 5.45 5.67 7 4zm7 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+        <span class="text-xs">Cart</span>
+      </a>
+      <a href="activity.html" class="flex flex-col items-center text-gray-400">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 7v2h3v2h-4V7h4V5h-3V3h-2v4H8v2h4z"/></svg>
+        <span class="text-xs">Activity</span>
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>
